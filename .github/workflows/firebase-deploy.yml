@@ -3,6 +3,7 @@
 name: Deploy to Firebase
 
 on:
+  pull_request:
   workflow_dispatch:
     inputs:
       release_notes:
@@ -12,8 +13,8 @@ on:
         description: 'Release Notes'
 
 jobs:
-  build:
-    name: Building and distributing app
+  assemble_and_upload:
+    name: Assemble and distribute app
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

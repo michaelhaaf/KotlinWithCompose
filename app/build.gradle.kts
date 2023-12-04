@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-parcelize")
     id("com.google.gms.google-services")
+    id("com.diffplug.spotless") version "6.23.3"
 }
 
 android {
@@ -51,6 +52,18 @@ android {
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
+    spotless {
+        kotlin {
+            ktfmt()
+            ktlint()
+            diktat()
+            prettier()
+        }
+        kotlinGradle {
+            ktlint()
+            diktat()
         }
     }
 }
